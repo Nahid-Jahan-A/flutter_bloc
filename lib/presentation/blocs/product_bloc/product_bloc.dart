@@ -12,7 +12,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<FetchProducts>((event, emit) async {
       emit(ProductLoading());
       try {
-        final products = await getProductsUseCase();
+        final products = await getProductsUseCase(null);
         emit(ProductLoaded(products));
       } catch (e) {
         emit(ProductError("Failed to load products"));
